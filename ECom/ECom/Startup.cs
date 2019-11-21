@@ -42,14 +42,22 @@ namespace ECom
         {
             services.AddMvc();
 
+            string storeConnectionString = Environment.IsDevelopment()
+                    ? Configuration["ConnectionStrings:StoreDbLocalConnection"]
+                    : Configuration["ConnectionStrings:StoreDbProductionConnection"];
+
+            string applicationConnectionString = Environment.IsDevelopment()
+                    ? Configuration["ConnectionStrings:ApplicationDbLocalConnection"]
+                    : Configuration["ConnectionStrings:ApplicationDbProductionConnection"];
+
             services.AddDbContext<StoreDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(storeConnectionString));
 
-
-            services.AddScoped<IInventory, ProductService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("UserDefaultConnection")));
+            options.UseSqlServer(applicationConnectionString));
+
+            services.AddScoped<IInventory, ProductService>();
 
             //Connect user to specific Database for information storage
             services.AddIdentity<ApplicationUser, IdentityRole>()
