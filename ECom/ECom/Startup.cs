@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ECom.Data;
+using ECom.Models.Interfaces;
+using ECom.Models.Services;
 using ECom.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,6 +20,18 @@ namespace ECom
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public IHostEnvironment Environment { get; }
+
+        public Startup(IHostEnvironment environment)
+        {
+            Environment = environment;
+            var builder = new ConfigurationBuilder().AddEnvironmentVariables();
+            builder.AddUserSecrets<Startup>();
+            Configuration = builder.Build();
+        }
+
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +41,12 @@ namespace ECom
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<StoreDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+            services.AddScoped<IInventory, ProductService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("UserDefaultConnection")));
@@ -46,6 +66,7 @@ namespace ECom
             }
             //Enable Authentication
             app.UseRouting();
+            app.UseStaticFiles();
             app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
