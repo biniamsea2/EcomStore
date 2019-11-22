@@ -32,12 +32,14 @@ namespace ECom.Pages.Account
 
         public async Task<IActionResult> OnPost()
         {
+            //the state of the model is what we are expecting. Following data notations
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if(result.Succeeded)
                 {
+                    //be cautious of this line of code:
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
                     return RedirectToAction("Index", "Home");
