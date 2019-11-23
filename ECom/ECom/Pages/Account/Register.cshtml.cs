@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using ECom.Models;
 using Microsoft.AspNetCore.Identity;
@@ -10,6 +11,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECom.Pages.Account
 {
+    /// <summary>
+    /// claims are added to the registration page because this is the one area where you, the developer are able 
+    /// to get more info from the user and the user actually be willing to input that information.
+    /// </summary>
     public class RegisterModel : PageModel
     {
         private UserManager<ApplicationUser> _userManager;
@@ -39,8 +44,20 @@ namespace ECom.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if(result.Succeeded)
                 {
+                    //add claim once registration is created but before you sign them in.
+                   //To.String("u") cuts off the time and only keeps the date(mm/dd/yyyy).
+                    Claim dob = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.Birthdate.Year, user.Birthdate.Month,
+                        user.Birthdate.Day).ToString("u"), ClaimValueTypes.DateTime);
+
+                    Claim email = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+                    List<Claim> claims = new List<Claim> { dob, email };
+
                     //be cautious of this line of code:
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    //we created claims, now we need to add all claims. Put all claims in a list and put that list in as a parameter in the AddClaimsAsync method.
+                    await _userManager.AddClaimsAsync(user, claims);
 
                     return RedirectToAction("Index", "Home");
                 }
