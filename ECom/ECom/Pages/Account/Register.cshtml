@@ -19,11 +19,17 @@
     <label asp-for="Input.LastName">Last Name</label>
     <input asp-for="Input.LastName" />
 
+    @*addded claim use user input to add this claim to the user*@
+    <label asp-for="Input.Country">Country</label>
+    <input asp-for="Input.Country" />
+
     <label asp-for="Input.Password">Password</label>
     <input asp-for="Input.Password" />
 
     <label asp-for="Input.ConfirmPassword">Confirm Password</label>
     <input asp-for="Input.ConfirmPassword" />
+
+
 
     <button type="submit">Register</button>
 

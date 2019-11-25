@@ -41,7 +41,7 @@ namespace ECom.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName= Input.FirstName,
-                LastName= Input.LastName, Birthdate= Input.Birthdate, Country=Input.Country};
+                LastName= Input.LastName, Birthdate= Input.Birthdate};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if(result.Succeeded)
                 {
@@ -51,7 +51,7 @@ namespace ECom.Pages.Account
                         user.Birthdate.Day).ToString("u"), ClaimValueTypes.DateTime);
 
                     Claim email = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
-                    Claim country = new Claim(ClaimTypes.Country, user.Country, ClaimValueTypes.String);
+                    Claim country = new Claim(ClaimTypes.Country, Input.Country, ClaimValueTypes.String);
                     Claim fullName = new Claim("FullName", $"{Input.FirstName}{Input.LastName}");
 
 
@@ -91,8 +91,11 @@ namespace ECom.Pages.Account
             [DataType(DataType.Date)]
             public DateTime Birthdate { get; set; }
 
+
+            //claim added
             [Required]
             public string Country { get; set; }
+
 
             [Required]
             [DataType(DataType.Password)]

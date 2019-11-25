@@ -18,9 +18,6 @@ namespace ECom.Models
         public string LastName { get; set; }
 
         [Required]
-        public string Country { get; set; }
-
-        [Required]
         public DateTime Birthdate { get; set; }
     }
 }
