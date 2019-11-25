@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ECom.Models
+@inject SignInManager<ApplicationUser> SignInManager
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <p>WELCOME @User.Claims.First(c=> c.Type == "FullName").Value</p>
+        <form asp-page="/Account/Logout">
+            <button type="submit">LogOut</button>
+        </form>
+    }
+    else
+    {
+        <p> WELCOME USER!</p>
+    }
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
