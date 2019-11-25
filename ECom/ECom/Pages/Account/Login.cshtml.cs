@@ -54,7 +54,9 @@ namespace ECom.Pages.Account
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public class InputModel
         {
             [Required]
