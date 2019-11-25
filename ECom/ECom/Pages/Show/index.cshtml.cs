@@ -11,7 +11,7 @@ namespace ECom.Pages.Show
     {
         public void OnGet()
         {
-
+            
         }
     }
 }
