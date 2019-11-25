@@ -12,6 +12,13 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <p>WELCOME @User.Claims.First(c=> c.Type == "FullName").Value</p>
+        <form asp-page="/Account/Logout">
+            <button type="submit">LogOut</button>
+        </form>
+    }
+    else
+    {
+        <p> WELCOME USER!</p>
     }
     <div>
         @RenderBody()
