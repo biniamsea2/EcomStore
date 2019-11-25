@@ -47,8 +47,6 @@ namespace ECom.Pages.Account
                     ModelState.AddModelError(String.Empty, "Invalid Login Attempt");
                     return Page();
                 }
-
-
             }
             return Page();
         }
