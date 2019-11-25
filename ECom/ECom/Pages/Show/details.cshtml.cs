@@ -9,7 +9,8 @@ namespace ECom.Pages.Show
 {
     public class detailsModel : PageModel
     {
-        public void OnGet()
+        //add the id as a parameter in order to get the details of a specific product.
+        public void OnGet(int id)
         {
 
         }
