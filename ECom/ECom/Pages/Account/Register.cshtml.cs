@@ -52,9 +52,10 @@ namespace ECom.Pages.Account
 
                     Claim email = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
                     Claim country = new Claim(ClaimTypes.Country, user.Country, ClaimValueTypes.String);
+                    Claim fullName = new Claim("FullName", $"{Input.FirstName}{Input.LastName}");
 
 
-                    List<Claim> claims = new List<Claim> { dob, email, country };
+                    List<Claim> claims = new List<Claim> { dob, email, country, fullName };
 
                     //be cautious of this line of code:
                     await _signInManager.SignInAsync(user, isPersistent: false);
