@@ -40,7 +40,8 @@ namespace ECom.Pages.Account
             //the state of the model is what we are expecting. Following data notations
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName= Input.FirstName,
+                LastName= Input.LastName, Birthdate= Input.Birthdate, Country=Input.Country};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if(result.Succeeded)
                 {
@@ -50,8 +51,10 @@ namespace ECom.Pages.Account
                         user.Birthdate.Day).ToString("u"), ClaimValueTypes.DateTime);
 
                     Claim email = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+                    Claim country = new Claim(ClaimTypes.Country, user.Country, ClaimValueTypes.String);
 
-                    List<Claim> claims = new List<Claim> { dob, email };
+
+                    List<Claim> claims = new List<Claim> { dob, email, country };
 
                     //be cautious of this line of code:
                     await _signInManager.SignInAsync(user, isPersistent: false);
@@ -86,6 +89,9 @@ namespace ECom.Pages.Account
             [Required]
             [DataType(DataType.Date)]
             public DateTime Birthdate { get; set; }
+
+            [Required]
+            public string Country { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
