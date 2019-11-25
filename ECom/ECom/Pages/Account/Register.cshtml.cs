@@ -91,7 +91,6 @@ namespace ECom.Pages.Account
             [DataType(DataType.Date)]
             public DateTime Birthdate { get; set; }
 
-
             //claim added
             [Required]
             public string Country { get; set; }
