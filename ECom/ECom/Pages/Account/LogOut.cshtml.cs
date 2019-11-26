@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECom.Pages.Account
 {
+    /// <summary>
+    /// This razor page includes a dependency injection with our signInManager. We have an onPost method
+    /// that once hit, it will sign the user out and redirect them to the home index page. 
+    /// </summary>
     public class LogOutModel : PageModel
     {
         private SignInManager<ApplicationUser> _signInManager;

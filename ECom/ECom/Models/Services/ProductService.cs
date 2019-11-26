@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace ECom.Models.Services
 {
+    /// <summary>
+    /// This service has a dependecy injection where we are injecting our database into our service. It is also
+    /// creating our crud operations.
+    /// </summary>
     public class ProductService : IInventory
     {
         private StoreDbContext _context;

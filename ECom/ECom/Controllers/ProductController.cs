@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECom.Controllers
 {
+    /// <summary>
+    /// we have a dependency injection with our IInventory interface. It includes an index with a return of view that 
+    /// we have created in our pages folder
+    /// </summary>
     public class ProductController : Controller
     {
         private readonly IInventory _context;

@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ECom.Models
 {
+    /// <summary>
+    /// This ApplicationUser model has properties that we will use to store information in our database regarding our users.
+    /// Data notation is included to make the properties required, it also is used to change the display names for some properties.
+    /// </summary>
     public class ApplicationUser : IdentityUser
     {
         [Required]
@@ -20,4 +24,5 @@ namespace ECom.Models
         [Required]
         public DateTime Birthdate { get; set; }
     }
+
 }
