@@ -1,7 +1,7 @@
 ﻿@page
-@model ECom.Pages.Account.LogOutModel
+@model ECom.Pages.Show.indexModel
 @{
-    ViewData["Title"] = "LogOut";
+    ViewData["Title"] = "Index";
     Layout = "_Layout";
 }
 <!DOCTYPE html>
@@ -18,7 +18,21 @@
 </head>
 <body>
 
-    <h1>LogOut</h1>
+    <h1>Luxury cars</h1>
+    <div class="container">
 
+        @foreach (var item in Model.Products)
+        {
+
+            <img src="@Html.DisplayFor(modelItem => item.Image)" /><br />
+
+            @Html.DisplayFor(modelItem => item.Name)<br />
+            @Html.DisplayFor(modelItem => item.Year)<br />
+            @Html.DisplayFor(modelItem => item.Price)<br />
+            <div class="btn btn-primary">
+                <a id="backbtn" asp-page="details" asp-route-id="@item.ID">Details</a>
+            </div><br />
+        }
+    </div>
 </body>
 </html>
