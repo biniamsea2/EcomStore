@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace ECom.Models.Interfaces
 {
+    /// <summary>
+    /// IInventory interface will have our crud operations to eventually have an admin be able to use crud operations on our product 
+    /// </summary>
     public interface IInventory 
     {
         //Create product 

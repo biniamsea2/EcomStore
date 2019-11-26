@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECom.Controllers
 {
+    //Home controller will return the index view that we have setup. In our home folder in views.
+    
     public class HomeController : Controller
     {
         public IActionResult Index()
