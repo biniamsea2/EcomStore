@@ -47,12 +47,12 @@ namespace ECom.Pages.Account
                 {
                     //add claim once registration is created but before you sign them in.
                    //To.String("u") cuts off the time and only keeps the date(mm/dd/yyyy).
+                    Claim fullName = new Claim("FullName", $"{Input.FirstName} {Input.LastName}");
                     Claim dob = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.Birthdate.Year, user.Birthdate.Month,
                         user.Birthdate.Day).ToString("u"), ClaimValueTypes.DateTime);
 
                     Claim email = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
                     Claim country = new Claim(ClaimTypes.Country, Input.Country, ClaimValueTypes.String);
-                    Claim fullName = new Claim("FullName", $"{Input.FirstName}{Input.LastName}");
 
 
                     List<Claim> claims = new List<Claim> { dob, email, country, fullName };
