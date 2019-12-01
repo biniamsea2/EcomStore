@@ -8,6 +8,7 @@ using ECom.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 
 namespace ECom.Pages.Account
 {
@@ -19,14 +20,17 @@ namespace ECom.Pages.Account
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        public IConfiguration Configuration { get; }
 
         [BindProperty]
         public RegisterInput Input { get; set; }
 
-        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        //brought in configuration to be able to get admin email from user secrets.
+        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration )
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            Configuration = configuration;
         }
 
         //Gets default info for page
@@ -61,6 +65,16 @@ namespace ECom.Pages.Account
                     await _userManager.AddClaimsAsync(user, claims);
                     //be cautious of this line of code:
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    //if user registers in with admin email, make that user an admin user. Admin email is located in our user secrets. 
+                    if(Input.Email == Configuration["AdminEmail"])
+                    {
+                        //make sure role is singular to only allow this user admin access. We are not going to give them both roles of admin and member.
+                        //you can if you want, just change 'role' to 'roles'
+                        await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
+                    }
+                    //if user doesnt register with admin email make them a member.
+                    await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
 
 
                     return RedirectToAction("Index", "Home");

@@ -24,5 +24,8 @@ namespace ECom.Controllers
         {
             return View();
         }
+
+
+        // only allow authorized users to be able to get the rest of these actions 
     }
 }

@@ -25,4 +25,11 @@ namespace ECom.Models
         public DateTime Birthdate { get; set; }
     }
 
+    //creating roles for our applications 
+    public static class ApplicationRoles
+    {
+        public const string Member = "Member";
+        public const string Admin = "Administrator";
+    }
+
 }
