@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace ECom
 {
@@ -67,6 +68,8 @@ namespace ECom
             //on authorization add policy which is 'Admin Only' policy, the 'Admin Only' policy is going to be based off the admin role.
             services.AddAuthorization(options =>
             options.AddPolicy("Admin Only", policy => policy.RequireRole(ApplicationRoles.Admin)));
+
+            services.AddScoped<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
