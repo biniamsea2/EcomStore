@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity.UI.Services;
+
 
 namespace ECom.Controllers
 {
@@ -10,6 +12,9 @@ namespace ECom.Controllers
     
     public class HomeController : Controller
     {
+        private IEmailSender _email;
+
+        public HomeController(IEmailSender email)
         public IActionResult Index()
         {
             return View();
