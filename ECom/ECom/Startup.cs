@@ -58,6 +58,7 @@ namespace ECom
             options.UseSqlServer(applicationConnectionString));
 
             services.AddScoped<IInventory, ProductService>();
+            services.AddScoped<ICartManager, CartService>();
 
             //Connect user to specific Database for information storage
             services.AddIdentity<ApplicationUser, IdentityRole>()

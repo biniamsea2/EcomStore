@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ECom.Models;
 using ECom.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +15,12 @@ namespace ECom.Controllers
     public class ProductController : Controller
     {
         private readonly IInventory _context;
+        private readonly ICartManager _Context;
 
-        public ProductController(IInventory product)
+        public ProductController(IInventory product, ICartManager cart)
         {
             _context = product;
+            _Context = cart;
         }
 
         public IActionResult Index()
@@ -26,6 +29,18 @@ namespace ECom.Controllers
         }
 
 
-        // only allow authorized users to be able to get the rest of these actions 
+
+        //public async Task UpdateItemAsync(CartItems item)
+        //{
+
+        //}
+
+
+        public IActionResult AddItemToCartAsync(CartItems item)
+        {
+            return View();
+        }
+
+
     }
 }

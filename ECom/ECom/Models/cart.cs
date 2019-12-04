@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace ECom.Models
 {
-    public class cart
+    public class Cart
     {
         public int ID { get; set; }
-        public string ApplicationID { get; set; }
+        public string CartId { get; set; }
 
         //nav properties 
         public ICollection<CartItems> CartItems { get; set; }

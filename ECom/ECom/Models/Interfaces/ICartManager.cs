@@ -1,28 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ECom.Models.Interfaces
 {
     public interface ICartManager
     {
-        //Create item 
-        Task CreateItemAsync(CartItems item);
+        //create a cart
+        Task CreateCartAsync(Cart cart);
 
-        //Create cart 
-        Task CreateCartAsync(CartItems item);
+        //get specific cart 
+        Task <Cart> GetCartByIdAsync(string CartId); 
 
-        //Get individual item
-        Task<CartItems> GetItemByIDAsync(int id);
+        //add item to a specific cart
+        Task AddItemToCartAsync(CartItems item);
 
-        //Get all items
-        Task<List<CartItems>> GetItemsAsync();
+        //Get specific item from a specific cart
+        Task<CartItems> GetItemByIDAsync(string CartId, int ProductId);
+
+        //Get all items from a specific user's cart
+        Task<List<CartItems>> GetItemsAsync(string CartId);
 
         //Update specific item
         Task UpdateItemAsync(CartItems item);
 
-        //Delete specific item
-        Task DeleteItemAsync(int id);
+        //Delete specific item from a user's cart
+        Task DeleteItemAsync(CartItems item);
     }
 }
