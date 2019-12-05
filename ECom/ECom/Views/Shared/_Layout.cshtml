@@ -30,30 +30,33 @@
                 <li class="navbar-item">
                     <a href="~/Shared/" class="nav-link">Products</a>
                 </li>
+                <li class="navbar-item">
+                    <a href="/shoppingcart/cart" class="nav-link">Cart</a>
+                </li>
                 @*<li class="navbar-item">
+            <a href="~/Account/Login" class="nav-link">Login</a>
+        </li>
+        <li class="navbar-item">
+            <a href="~/Account/Register" class="nav-link">Register</a>
+        </li>*@
+                <li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <p id="welcome">WELCOME @User.Claims.First(c => c.Type == "FullName").Value!</p>
+                        <form asp-page="/Account/Logout">
+                            <button type="submit">LogOut</button>
+                        </form>
+                        <a href="~/Admin" class="nav-link">Admin</a>
+
+                    }
+
+                    else
+                    {
                         <a href="~/Account/Login" class="nav-link">Login</a>
-                    </li>
-                    <li class="navbar-item">
                         <a href="~/Account/Register" class="nav-link">Register</a>
-                    </li>*@
-            <li>
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    <p id="welcome">WELCOME @User.Claims.First(c => c.Type == "FullName").Value!</p>
-                    <form asp-page="/Account/Logout">
-                        <button type="submit">LogOut</button>
-                    </form>
-                    <a href="~/Admin" class="nav-link">Admin</a>
-
-                }
-
-                else
-                {
-                    <a href="~/Account/Login" class="nav-link">Login</a>
-                    <a href="~/Account/Register" class="nav-link">Register</a>
-                    <p> WELCOME USER!</p>
-                }
-            </li>
+                        <p> WELCOME USER!</p>
+                    }
+                </li>
             </ul>
         </div>
     </nav>
