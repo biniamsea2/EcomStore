@@ -14,7 +14,7 @@ allow those above a certain age to access our site. Lastly, we created a country
 to get more information from our user and possibly send messages to users from specific countries. This claim is also taking place during registration.
 
 #### Structure/Database Schema for your store DB (not identity)  
-![MyImage.png](/.attachments/MyImage-98765432-abcd-1234-abcd-a1234567890b.png =500x)
+![MyImage.png](https://dev.azure.com/Biniam-Enrique401ECom/c6a39389-7db6-452b-b285-1faf58ec21f1/_apis/git/repositories/78bf6ad1-d773-4add-aa30-5ac9b4cd81ea/Items?path=%2FSchema.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=Development&download=false&resolveLfs=true&%24format=octetStream&api-version=5.0-preview.1)
 
 
 #### Explanation of your DB Schema (mostly interested in your basket/order tables)  
