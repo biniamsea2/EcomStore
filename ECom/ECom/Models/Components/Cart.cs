@@ -17,11 +17,11 @@ namespace ECom.Models.Components
         }
 
         //this next method is not complete. -enrique
-        public async Task<IViewComponentResult> InvokeAsync(int number)
-        {
-            var products = _context.Products.OrderByDescending(x => x.ID)
-                                             .Take(number);
-            return View(products);
-        }
+        //public async Task<IViewComponentResult> InvokeAsync(int number)
+        //{
+        //    var products = _context.Products.OrderByDescending(x => x.ID)
+        //                                     .Take(number);
+        //    return View(products);
+        //}
     }
 }
