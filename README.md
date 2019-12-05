@@ -14,6 +14,8 @@ allow those above a certain age to access our site. Lastly, we created a country
 to get more information from our user and possibly send messages to users from specific countries. This claim is also taking place during registration.
 
 #### Structure/Database Schema for your store DB (not identity)  
+![MyImage.png](/.attachments/MyImage-98765432-abcd-1234-abcd-a1234567890b.png =500x)
+
 
 #### Explanation of your DB Schema (mostly interested in your basket/order tables)  
 We haven't fully finished Sprint 2 however, we did create the table for the "basket". We decided to follow the ERD given to us by Amanada. Our basket which we named
