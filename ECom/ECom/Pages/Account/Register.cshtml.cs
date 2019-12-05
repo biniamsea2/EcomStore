@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using ECom.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
@@ -20,17 +22,20 @@ namespace ECom.Pages.Account
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private IEmailSender _email;
+
         public IConfiguration Configuration { get; }
 
         [BindProperty]
         public RegisterInput Input { get; set; }
 
         //brought in configuration to be able to get admin email from user secrets.
-        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration )
+        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IEmailSender email )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             Configuration = configuration;
+            _email = email;
         }
 
         //Gets default info for page
@@ -66,6 +71,9 @@ namespace ECom.Pages.Account
                     //be cautious of this line of code:
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
+                    // send email here
+                    SendRegEmail(user.Email);
+
                     //if user registers in with admin email, make that user an admin user. Admin email is located in our user secrets. 
                     if(Input.Email == Configuration["AdminEmail"])
                     {
@@ -86,6 +94,21 @@ namespace ECom.Pages.Account
                 }
             }
             return Page();
+        }
+
+        private void SendRegEmail(string toEmail)
+        {
+            StringBuilder sb = new StringBuilder();
+            Email email = new Email();
+
+            sb.Append("Thank you for Registering. You will find the best prices and best models in our site. Customer satisfaction guaranteed! ");
+
+
+            //populate sb with yoru welcome email
+
+
+            _email.SendEmailAsync(toEmail, "Welcome to Luxury Cars", sb.ToString());
+
         }
 
         public class RegisterInput
