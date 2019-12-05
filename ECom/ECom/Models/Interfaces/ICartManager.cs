@@ -9,13 +9,13 @@ namespace ECom.Models.Interfaces
         Task CreateCartAsync(Cart cart);
 
         //get specific cart 
-        Task <Cart> GetCartByIdAsync(string CartId); 
+        Task <Cart> GetCartByIdAsync(string UserID); 
 
         //add item to a specific cart
         Task AddItemToCartAsync(CartItems item);
 
         //Get specific item from a specific cart
-        Task<CartItems> GetItemByIDAsync(string CartId, int ProductId);
+        Task<CartItems> GetItemByIDAsync(string UserID, int ProductId);
 
         //Get all items from a specific user's cart
         Task<List<CartItems>> GetItemsAsync(string CartId);

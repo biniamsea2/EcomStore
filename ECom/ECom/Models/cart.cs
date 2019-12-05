@@ -8,7 +8,7 @@ namespace ECom.Models
     public class Cart
     {
         public int ID { get; set; }
-        public string CartId { get; set; }
+        public string UserID { get; set; }
 
         //nav properties 
         //public ICollection<CartItems> CartItems { get; set; }
