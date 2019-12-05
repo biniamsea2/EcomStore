@@ -11,6 +11,6 @@ namespace ECom.Models
         public string CartId { get; set; }
 
         //nav properties 
-        public ICollection<CartItems> CartItems { get; set; }
+        //public ICollection<CartItems> CartItems { get; set; }
     }
 }
