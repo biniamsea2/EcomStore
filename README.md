@@ -13,5 +13,13 @@ of our application user. We are also doing this during registration. We created 
 allow those above a certain age to access our site. Lastly, we created a country claim to be able to access the application user's location. We did this to be able
 to get more information from our user and possibly send messages to users from specific countries. This claim is also taking place during registration.
 
-#### Link to your deployed website.
+#### Structure/Database Schema for your store DB (not identity)  
+
+#### Explanation of your DB Schema (mostly interested in your basket/order tables)  
+We haven't fully finished Sprint 2 however, we did create the table for the "basket". We decided to follow the ERD given to us by Amanada. Our basket which we named
+"Cart" has a primary key and the userId. We do this inorder to create the foreign key in our "cartItems" table. So that whenever a user want to add an item to their cart 
+we can successfully link the item to the correct cart for the user. As for the order table, we haven't created that yet however, we plan on doing that with our next submission.
+We will create an "order" table and an "orderItems" table to keep track of all the orders for a user and all the items they've ordered thus far.
+
+#### Link to your deployed website.  
 https://ecom20191126124500.azurewebsites.net
