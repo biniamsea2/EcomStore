@@ -24,12 +24,12 @@ namespace ECom.Pages.ShoppingCart
 
         public IEnumerable<CartItems> TestItem { get; set; }
 
-        public async Task OnGet()
-        {
-            ApplicationUser newUser = await _userManager.GetUserAsync(User);
+        //public async Task OnGet()
+        //{
+        //    ApplicationUser newUser = await _userManager.GetUserAsync(User);
 
-            TestItem = await _context.GetItemsAsync(newUser.Email);
-        }
+        //    TestItem = await _context.GetItemsAsync(newUser.Email);
+        //}
 
 
         public  void OnPost()
