@@ -70,7 +70,7 @@ namespace ECom.Pages.Account
                     //created a cart claim to be able to add a cart to every registered user. Using the user's email address as the cart Id.
                    // Claim cart = new Claim("CartId", $"{Input.Email}");
 
-                    Cart newCart = new Cart() { CartId = Input.Email };
+                    Cart newCart = new Cart() { CartID = Input.Email };
                     await _context.CreateCartAsync(newCart);
 
 

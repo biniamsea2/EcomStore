@@ -33,24 +33,24 @@ namespace ECom.Pages.Show
 
 
 
-        public async Task<IActionResult> OnPostAsync(int id)
-        {
-            ApplicationUser user = await _manager.GetUserAsync(User);
-            Cart cart = await _cart.GetCartByIdAsync(user.Email);
-            {
-                if (ModelState.IsValid)
-                {
-                    CartItems item = new CartItems();
-                    item.CartId = cart.CartId;
-                    item.ProductId = id;
-                    item.Quantity = 1;
+        //public async Task<IActionResult> OnPostAsync(int id)
+        //{
+        //    ApplicationUser user = await _manager.GetUserAsync(User);
+        //    Cart cart = await _cart.GetCartByIdAsync(user.Email);
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            CartItems item = new CartItems();
+        //            item.CartId = cart.UserID;
+        //            item.ProductId = id;
+        //            item.Quantity = 1;
 
-                    await _cart.AddItemToCartAsync(item);
-                }
-            }
-            return Redirect("/ShoppingCart/Cart");
+        //            await _cart.AddItemToCartAsync(item);
+        //        }
+        //    }
+        //    return Redirect("/ShoppingCart/Cart");
 
-        }
+        //}
     }
 }
     

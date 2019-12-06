@@ -24,7 +24,7 @@ namespace ECom.Models.Services
         }
 
         //getting a specific user's cart
-        public async Task<Cart> GetCartByIdAsync(string CartId) => await _context.Cart.FirstOrDefaultAsync(it => it.UserID == CartId);
+        public async Task<Cart> GetCartByIdAsync(string CartId) => await _context.Cart.FirstOrDefaultAsync(it => it.CartID == CartId);
 
         //adding an item to a user's cart
         public async Task AddItemToCartAsync(CartItems item)
@@ -34,7 +34,7 @@ namespace ECom.Models.Services
         }
 
         //get a specific item 
-        public async Task<CartItems> GetItemByIDAsync(string UserID, int ProductId) => await _context.CartItems.FirstOrDefaultAsync(it1 => it1.CartId == CartId && it1.ProductId == ProductId);
+        //public async Task<CartItems> GetItemByIDAsync(string c, int ProductId) => await _context.CartItems.FirstOrDefaultAsync(it1 => it1.CartId == CartId && it1.ProductId == ProductId);
 
 
         //delete a specific item from a user's cart
@@ -46,11 +46,11 @@ namespace ECom.Models.Services
 
 
         //get all items associated to a specific user
-        public async Task<List<CartItems>> GetItemsAsync(string CartId)
-        {
-            List<CartItems> items = await _context.CartItems.Where(x => x.CartId == CartId).ToListAsync();
-            return items;
-        }
+        //public async Task<List<CartItems>> GetItemsAsync(string CartId)
+        //{
+        //    List<CartItems> items = await _context.CartItems.Where(x => x.CartId == CartId).ToListAsync();
+        //    return items;
+        //}
 
         //updating specific item 
         public async Task UpdateItemAsync(CartItems item)
