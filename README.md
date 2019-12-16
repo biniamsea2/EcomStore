@@ -13,7 +13,7 @@ of our application user. We are also doing this during registration. We created 
 allow those above a certain age to access our site. Lastly, we created a country claim to be able to access the application user's location. We did this to be able
 to get more information from our user and possibly send messages to users from specific countries. This claim is also taking place during registration.
 
-#### Structure/Database Schema for your store DB (not identity)  
+#### Structure/Database Schema for store DB (not identity)  
 ![MyImage.png](https://github.com/biniamsea2/EcomStore/blob/Development/Schema.png)
 
 
