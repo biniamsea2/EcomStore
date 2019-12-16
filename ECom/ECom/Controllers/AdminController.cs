@@ -143,6 +143,12 @@ namespace ECom.Controllers
             }
             return false;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Upload()
+        {
+
+        }
     }
 
 }
