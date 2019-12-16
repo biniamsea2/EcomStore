@@ -23,8 +23,9 @@ We haven't fully finished Sprint 2 however, we did create the table for the "bas
 we can successfully link the item to the correct cart for the user. As for the order table, we haven't created that yet however, we plan on doing that with our next submission.
 We will create an "order" table and an "orderItems" table to keep track of all the orders for a user and all the items they've ordered thus far.
 
-### Vulnerability Report
+#### Vulnerability Report
 https://github.com/biniamsea2/EcomStore/blob/Development/vulnerability-report.md
 
 #### Link to your deployed website.  
 https://ecom20191126124500.azurewebsites.net
+
