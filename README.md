@@ -14,7 +14,7 @@ allow those above a certain age to access our site. Lastly, we created a country
 to get more information from our user and possibly send messages to users from specific countries. This claim is also taking place during registration.
 
 #### Structure/Database Schema for your store DB (not identity)  
-![MyImage.png](https://github.com/codefellows/seattle-dotnet-401d9/blob/master/Resources/ECom/StoreDBERD.pdf)
+![MyImage.png](https://github.com/biniamsea2/EcomStore/blob/Development/Schema.png)
 
 
 #### Explanation of your DB Schema (mostly interested in your basket/order tables)  
