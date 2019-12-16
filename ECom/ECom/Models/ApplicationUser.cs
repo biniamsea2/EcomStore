@@ -24,10 +24,6 @@ namespace ECom.Models
 
         [Required]
         public DateTime Birthdate { get; set; }
-
-
-      
-
     }
 
     //creating roles for our applications 
